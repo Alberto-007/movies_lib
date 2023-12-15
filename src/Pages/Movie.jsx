@@ -6,7 +6,7 @@ import {
   BsHourglassSplit,
   BsFillFileEarmarkTextFill,
 } from "react-icons/bs";
-
+import axios from 'axios';
 import MovieCard from "../Components/MovieCard";
 
 import "./Movie.css";
@@ -19,11 +19,20 @@ export default function Movie() {
   const [movie, setMovie] = useState(null);
 
   const getMovie = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data);
-    setMovie(data);
-  };
+    await axios.get(url)
+    .then((res) => {
+      console.log(res)
+      setMovie(res.data)
+    })
+    .catch((err) => console.log(err))
+  }
+
+  // const getMovie = async (url) => {
+  //   const res = await fetch(url);
+  //   const data = await res.json();
+  //   console.log(data);
+  //   setMovie(data);
+  // };
 
   const formatCurrency = (number) => {
     return number.toLocaleString("en-US", {

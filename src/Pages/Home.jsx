@@ -16,7 +16,6 @@ export default function Home() {
             .catch((err) => console.log(err))
     };
 
-
     // const getTopRatedMovies = async (url) => {{
     //     const res = await fetch(url);
     //     const data = await res.json();
